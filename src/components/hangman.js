@@ -80,7 +80,7 @@ export const Hangman = () => {
 
     const textResult = () => {
         if (state.win == true) {
-            return <p>Bravo, vous avez gagné !</p>;
+            return <div><p>Bravo, vous avez gagné !</p><button onClick={restartGame}>Nouvelle Partie</button></div>;
         } else if (state.lost == true) {
             return <p>Perdu ! Le mot était : {state.word}</p>;
         }
@@ -91,14 +91,17 @@ export const Hangman = () => {
 
     // Nouvelle partie
     const restartGame = () => {
-        setState(prevState => ({ 
-            rightLetters: [prevState.word[0]], 
+        window.location.reload();
+        /*setState({ 
+            word: '',
+            rightLetters: [], 
             wrongLetters: [], 
             tries: 0,
             maxTries: 11, 
             win: false, 
-            lost: false }), 
-        recupWord()); 
+            lost: false 
+        });
+        recupWord();*/ 
     };
 
     useEffect(() => {
@@ -124,6 +127,7 @@ export const Hangman = () => {
             <button onClick={restartGame}>Recommencer</button>
 
             {textResult()}
+
         </div>
     );
 }
