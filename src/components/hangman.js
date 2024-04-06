@@ -92,16 +92,6 @@ export const Hangman = () => {
     // Nouvelle partie
     const restartGame = () => {
         window.location.reload();
-        /*setState({ 
-            word: '',
-            rightLetters: [], 
-            wrongLetters: [], 
-            tries: 0,
-            maxTries: 11, 
-            win: false, 
-            lost: false 
-        });
-        recupWord();*/ 
     };
 
     useEffect(() => {
