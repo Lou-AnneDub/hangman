@@ -36,13 +36,15 @@ export const Hangman = () => {
 
     // Masquer le mot à deviner
     const maskWord = () => {
-        return state.word.split('').map((letter, index) => {
-            if (index === 0 || state.rightLetters.includes(letter)) {
-                return letter;
-            } else {
-                return '_';
-            }
-        }).join(' ');
+        if (state.word) {
+            return state.word.split('').map((letter, index) => {
+                if (index === 0 || state.rightLetters.includes(letter)) {
+                    return letter;
+                } else {
+                    return '_';
+                }
+            }).join(' ')
+        };
     }
 
     // Gérer les lettres proposées
@@ -66,11 +68,13 @@ export const Hangman = () => {
 
     // Gérer la fin de la partie
     const statutGame = () => {
-        const allLettersGuessed = state.word.split('').every(letter => state.rightLetters.includes(letter));
-        if (state.word && allLettersGuessed) {
-            setState(prevState => ({ ...prevState, win: true }));
-        } else if (state.tries >= state.maxTries) {
-            setState(prevState => ({ ...prevState, lost: true }));
+        if (state.word) {
+            const allLettersGuessed = state.word.split('').every(letter => state.rightLetters.includes(letter));
+            if (state.word && allLettersGuessed) {
+                setState(prevState => ({ ...prevState, win: true }));
+            } else if (state.tries >= state.maxTries) {
+                setState(prevState => ({ ...prevState, lost: true }));
+            }
         }
     };
 
@@ -80,13 +84,17 @@ export const Hangman = () => {
         } else if (state.lost == true) {
             return <p>Perdu ! Le mot était : {state.word}</p>;
         }
+        else {
+            return '';
+        }
     }
 
     // Nouvelle partie
     const restartGame = () => {
         setState(prevState => ({ 
-            ...prevState, 
+            rightLetters: [prevState.word[0]], 
             wrongLetters: [], 
+            tries: 0,
             maxTries: 11, 
             win: false, 
             lost: false }), 
