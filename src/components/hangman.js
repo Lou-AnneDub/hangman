@@ -74,6 +74,14 @@ export const Hangman = () => {
         }
     };
 
+    const textResult = () => {
+        if (state.win == true) {
+            return <p>Bravo, vous avez gagné !</p>;
+        } else if (state.lost == true) {
+            return <p>Perdu ! Le mot était : {state.word}</p>;
+        }
+    }
+
     // Nouvelle partie
     const restartGame = () => {
         setState(prevState => ({ 
@@ -107,8 +115,7 @@ export const Hangman = () => {
 
             <button onClick={restartGame}>Recommencer</button>
 
-            {state.win && <p>Bravo, vous avez gagné !</p>}
-            {state.lost && <p>Perdu ! Le mot était : {state.word}</p>}
+            {textResult()}
         </div>
     );
 }
