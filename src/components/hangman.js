@@ -59,7 +59,7 @@ export const Hangman = () => {
                 ...state,
                 rightLetters: [...state.rightLetters, letter]
             });
-        } else {
+        } else  if (!state.wrongLetters.includes(letter)) {
             setState({
                 ...state,
                 wrongLetters: [...state.wrongLetters, letter],
