@@ -114,7 +114,7 @@ export const Hangman = () => {
                     {imgHangman({tries: state.tries})}
                 </div>
                 <div className='sectionWord'>
-                    <p>bouh  {state.word}</p>
+                    <p>Problème, la popup de victoire s'affiche une fois sur 3...</p>
                     <p className='maskWord'>{maskWord()}</p>
 
                     <form onSubmit={guessLetters}>
