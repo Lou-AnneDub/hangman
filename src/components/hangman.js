@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import {imgHangman} from './img';
+import './hangman.css';
 
 export const Hangman = () => {
     const [inputValue, setInputValue] = useState('');
@@ -70,7 +72,7 @@ export const Hangman = () => {
     const statutGame = () => {
         if (state.word) {
             const allLettersGuessed = state.word.split('').every(letter => state.rightLetters.includes(letter));
-            if (state.word && allLettersGuessed) {
+            if (allLettersGuessed) {
                 setState(prevState => ({ ...prevState, win: true }));
             } else if (state.tries >= state.maxTries) {
                 setState(prevState => ({ ...prevState, lost: true }));
@@ -80,9 +82,9 @@ export const Hangman = () => {
 
     const textResult = () => {
         if (state.win == true) {
-            return <div><p>Bravo, vous avez gagné !</p><button onClick={restartGame}>Nouvelle Partie</button></div>;
+            return <div className='endGame'><h2>🎉 Bravo ! Vous avez gagné ! 🎉</h2><button onClick={restartGame}>Nouvelle Partie</button></div>;
         } else if (state.lost == true) {
-            return <p>Perdu ! Le mot était : {state.word}</p>;
+            return <div className='endGame'><h2>Perdu ! Le mot était : {state.word}</h2><button onClick={restartGame}>Nouvelle Partie</button></div>;
         }
         else {
             return '';
@@ -101,20 +103,31 @@ export const Hangman = () => {
 
     return (
         <div>
-            <h2>Le pendu</h2>
-            <p>bouh  {state.word}</p>
-            <p>Le mot à deviner est : {maskWord()}</p>
+            <h1>Le pendu</h1>
+            <h2>Mythologie en anglais</h2>
+            <div className='things'>
+                <button onClick={restartGame}>Recommencer</button>
+                <p>Essais restants : {state.maxTries - state.tries}</p>
+            </div>
+            <div className='content'>
+                <div className='img'>
+                    {imgHangman({tries: state.tries})}
+                </div>
+                <div className='sectionWord'>
+                    <p>bouh  {state.word}</p>
+                    <p className='maskWord'>{maskWord()}</p>
 
-            <form onSubmit={guessLetters}>
-                <label htmlFor="letter">Entrez une lettre : </label>
-                <input type="text" id="letter" name="letter" maxLength="1" value={inputValue} onChange={e => setInputValue(e.target.value)} />
-                <button type="submit">Valider</button>
-            </form>
+                    <form onSubmit={guessLetters}>
+                        <label htmlFor="letter">Entrez une lettre : </label>
+                        <div>
+                            <input type="text" id="letter" name="letter" maxLength="1" value={inputValue} onChange={e => setInputValue(e.target.value)} />
+                            <button type="submit">Valider</button>
+                        </div>
+                    </form>
 
-            <p>Mauvaises lettres : {state.wrongLetters} </p>
-            <p>Essais restants : {state.maxTries - state.tries}</p>
-
-            <button onClick={restartGame}>Recommencer</button>
+                    <p className='wrongLetters'>Mauvaises lettres : <br />{state.wrongLetters} </p>
+                </div>
+            </div>
 
             {textResult()}
 

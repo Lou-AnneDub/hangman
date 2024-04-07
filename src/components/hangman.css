@@ -1,0 +1,164 @@
+body {
+    text-align: center;
+    margin: auto;
+    background-color: #faedcd;
+    color: #976000;
+}
+
+h1 { 
+    font-size: 3rem;
+    margin-bottom: 15px;
+    margin-top: 60px;
+}
+
+h2 {
+    margin-top: 10px;
+    font-size: 2.5rem;
+    color: #976000;
+}
+
+.things {
+    display: flex;
+    width: 60%;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.things p, .things button {
+    color: #647300;
+    border: #647300 2px solid;
+    background-color: #e9edc9b6;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.things button {
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.things button:hover {
+    background-color: #647300;
+    color: #e9edc9;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 75%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.img {
+    border: 2px solid #976000;
+    border-radius: 5px;
+}
+
+.img img {
+    border-radius: 5px;
+}
+
+.sectionWord {
+    width: 55%;  
+}
+
+.maskWord {
+    font-size: 3rem;
+}
+
+form {
+    margin-bottom: 40px;
+}
+
+form div {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+form input[type='text'] {
+    width: 30px;
+    font-size: 1.25rem;
+    padding: 5px;
+    text-align: center;
+    border: #647300 2px solid;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    color: #647300;
+    background-color: #e9edc9b6;
+    
+}
+
+form button {
+    font-size: 1rem;
+    padding: 7px 10px;
+    color: #647300;
+    border: #647300 2px solid;
+    border-left: none;
+    background-color: #e9edc9b6;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;;
+}
+
+form button:hover {
+    background-color: #647300;
+    color: #e9edc9;
+}
+
+.wrongLetters {
+    margin-top: 40px;
+    font-size: 1.25rem;
+    border: 2px solid #976000;
+    border-radius: 5px;
+    width: 45%;
+    min-height: 80px;
+    margin: auto;
+    line-height: 35px;
+    background-color: #efddba;
+    color: #976000;
+    padding: 7px;
+}
+
+.endGame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    height: 30%;
+    padding: 20px;
+    border: 2px solid #647300;
+    background-color: #fff7e2;
+    border-radius: 5px;
+    box-shadow: 0px 0px 47px 5px rgba(133,133,96,0.75);
+    -webkit-box-shadow: 0px 0px 47px 5px rgba(133,133,96,0.75);
+    -moz-box-shadow: 0px 0px 47px 5px rgba(133,133,96,0.75);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.endGame h2 {
+    font-size: 1.5rem;
+}
+
+.endGame button {
+    margin-top: 20px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    color: #647300;
+    border: #647300 2px solid;
+    background-color: #e9edc9b6;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.endGame button:hover {
+    background-color: #647300;
+    color: #e9edc9;
+}
